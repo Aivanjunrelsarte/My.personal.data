@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aivan Junrel Sarte | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0d0d0d;color:#fff;scroll-behavior:smooth;}
+img{display:block;max-width:100%;}
+
+/* Header */
+header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);padding:12px 20px;z-index:1000;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,26,26,0.5);border-radius:8px;}
+header h2{color:#ff1a1a;}
+nav{display:flex;gap:18px;}
+nav a{color:#fff;text-decoration:none;font-size:0.9rem;position:relative;cursor:pointer;}
+nav a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:#ff1a1a;transition:.3s;}
+nav a:hover::after{width:100%;}
+
+/* Sections */
+section{padding:120px 16px 70px;max-width:1200px;margin:auto;display:none;animation:fadeUp .8s ease both;border:1px solid rgba(255,26,26,0.4);border-radius:12px;background:rgba(255,26,26,0.05);}
+section.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+/* Home */
+#home{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+.home-content{flex:1;}
+.home-content h3{color:#ff4d4d;}
+.home-content h1{font-size:1.9rem;}
+.home-content h2{font-size:1.2rem;opacity:.9;}
+
+/* Typing text box */
+#typing-text {
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #ff1a1a;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: color 0.3s, background 0.3s;
+}
+.cursor {
+  display: inline-block;
+  color: #ff1a1a;
+  margin-left: 4px;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink{0%,50%,100%{opacity:1;}25%,75%{opacity:0;}}
+
+.btn{margin-top:18px;display:inline-block;padding:10px 24px;background:#ff1a1a;border-radius:25px;color:#fff;text-decoration:none;font-weight:600;transition:.3s;}
+.btn:hover{background:#ff4d4d;transform:translateY(-3px);}
+
+/* Home image */
+.home-img{
+  width:clamp(140px,24vw,220px);
+  aspect-ratio:1/1;
+  border-radius:50%;
+  overflow:hidden;
+  flex-shrink:0;
+  border:4px solid #ff1a1a;
+  box-shadow:0 0 25px rgba(255,26,26,0.6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.4s;
+}
+.home-img:hover{transform:scale(1.05) rotate(2deg);box-shadow:0 0 40px rgba(255,26,26,0.8);}
+.home-img img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+
+/* Titles */
+#about h2,#skills h2,#projects h2,#contact h2{text-align:center;color:#ff1a1a;margin-bottom:25px;}
+#about p{max-width:800px;margin:auto;text-align:center;color:#ccc;line-height:1.7;}
+
+/* Skills */
+.skills-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:30px;margin-top:30px;}
+.skill-card{
+  background: rgba(255,26,26,0.08);
+  padding:18px;
+  border-radius:18px;
+  border:1px solid rgba(255,26,26,0.7);
+  display:flex;flex-direction:column;gap:8px;font-weight:600;transition:.3s;
+}
+.skill-card i{font-size:1.5rem;color:#ff1a1a;}
+.skill-card span.percent{color:#ff1a1a;font-weight:700;align-self:flex-end;}
+.progress{margin-top:5px;height:8px;background:#333;border-radius:10px;overflow:hidden;}
+.progress-inner{height:100%;width:0;background:#ff1a1a;animation:load 1.5s forwards;}
+@keyframes load{to{width:var(--level);}}
+
+/* Projects */
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.project-card{
+  background: rgba(255,26,26,0.08);
+  border:1px solid rgba(255,26,26,0.7);
+  border-radius:18px;
+  padding:22px;
+  text-align:center;
+  transition:.3s;
+}
+.project-card:hover{transform:scale(1.05);}
+
+/* Contact */
+#contact form{
+  max-width:500px;
+  margin:20px auto;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  background: rgba(255,26,26,0.08);
+  border:1px solid rgba(255,26,26,0.7);
+  padding:15px;
+  border-radius:12px;
+}
+#contact textarea{padding:12px;border-radius:8px;border:none;outline:none;font-family:'Poppins',sans-serif;}
+#contact button{padding:12px;border-radius:8px;border:none;background:#ff1a1a;color:#fff;font-weight:600;cursor:pointer;transition:.3s;}
+#contact button:hover{background:#ff4d4d;transform:scale(1.05);}
+#statusMessage{text-align:center;margin-top:10px;color:#00ff00;font-weight:600;}
+.social-icons{display:flex;justify-content:center;gap:18px;margin-top:25px;}
+.social-icons a{width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;transition:.3s;}
+.social-icons a:hover{transform:scale(1.15);}
+.facebook{background:#1877f2;}
+.tiktok{background:#000;}
+.youtube{background:#ff0000;}
+.telegram{background:#0088cc;}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:15px;
+  background:#000;
+  color:#aaa;
+  font-size:0.85rem;
+  border:1px solid rgba(255,26,26,0.4);
+  border-radius:8px;
+}
+
+/* Mobile */
+@media(max-width:700px){#home{flex-direction:column-reverse;text-align:center;}.home-img{width:150px;}}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Portfolio</h2>
+  <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('about')">About</a>
+    <a onclick="showSection('skills')">Skills</a>
+    <a onclick="showSection('projects')">Portfolio</a>
+    <a onclick="showSection('contact')">Contact</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="home-content">
+    <h3>Hello, It's Me</h3>
+    <h1>AIVAN SARTE</h1>
+    <h2><span id="typing-text"></span><span class="cursor">|</span></h2>
+    <a class="btn" onclick="showSection('about')">More About Me</a>
+  </div>
+  <div class="home-img">
+    <img src="IMG_20251002_192906.jpg" alt="Aivan">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Me</h2>
+  <p>Hi! I’m <b>Aivan Junrel Sarte</b> from <b>Bohol, Philippines</b>. I build responsive and clean websites.</p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>My Skills</h2>
+  <div class="skills-list">
+    <div class="skill-card">
+      <i class="fab fa-html5"></i> HTML <span class="percent">0%</span>
+      <div class="progress"><div class="progress-inner" style="--level:90%"></div></div>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-css3-alt"></i> CSS <span class="percent">0%</span>
+      <div class="progress"><div class="progress-inner" style="--level:55%"></div></div>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-js-square"></i> JavaScript <span class="percent">0%</span>
+      <div class="progress"><div class="progress-inner" style="--level:65%"></div></div>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-python"></i> Python <span class="percent">0%</span>
+      <div class="progress"><div class="progress-inner" style="--level:20%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>My Portfolio</h2>
+  <div class="project-grid">
+    <div class="project-card">🌐 Personal Website</div>
+    <div class="project-card">💻 Python Project</div>
+    <div class="project-card">📱 Responsive Design</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="telegramForm">
+    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+  <div id="statusMessage"></div>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/AIVAN.SARTE.YT1" class="facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.tiktok.com/@aivansartejunrel" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://youtube.com/@aivansarte" class="youtube"><i class="fab fa-youtube"></i></a>
+    <a href="https://t.me/aivansarte" class="telegram"><i class="fab fa-telegram"></i></a>
+  </div>
+</section>
+
+<footer>© 2025 Aivan Junrel Sarte</footer>
+
+<script>
+// Section show/hide
+function showSection(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+// Typing effect
+const texts = [
+  "I'm a Web Developer",
+  "Practicing & Learning",
+  "Building Responsive Websites"
+];
+let count=0,index=0,currentText='';
+const typingSpeed=100,erasingSpeed=50,delay=1500;
+const typingElement=document.getElementById('typing-text');
+function type(){
+  if(index<texts[count].length){
+    currentText+=texts[count][index];
+    typingElement.textContent=currentText;
+    index++;
+    setTimeout(type,typingSpeed);
+  } else setTimeout(erase,delay);
+}
+function erase(){
+  if(index>0){
+    currentText=texts[count].substring(0,index-1);
+    typingElement.textContent=currentText;
+    index--;
+    setTimeout(erase,erasingSpeed);
+  } else{
+    count=(count+1)%texts.length;
+    setTimeout(type,typingSpeed);
+  }
+}
+document.addEventListener("DOMContentLoaded",()=>{if(texts.length)type();});
+
+// Animate skill bars and percentages
+window.addEventListener("DOMContentLoaded",()=>{
+  document.querySelectorAll(".skill-card").forEach(card=>{
+    const bar = card.querySelector(".progress-inner");
+    const percentText = card.querySelector(".percent");
+    const target = parseInt(bar.style.getPropertyValue('--level'));
+    let current = 0;
+    const step = target/50;
+    const interval = setInterval(()=>{
+      current += step;
+      if(current >= target){current = target;clearInterval(interval);}
+      bar.style.width = current+'%';
+      percentText.textContent = Math.round(current)+'%';
+    },30);
+  });
+});
+
+// Telegram form
+const telegramForm=document.getElementById('telegramForm');
+const statusMessage=document.getElementById('statusMessage');
+telegramForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const message=document.getElementById('message').value;
+  statusMessage.textContent="Sending...";
+  const botToken='8354705206:AAErV5zTqDdwIgph6mXhDFUfGREGLcpDW5Q';
+  const chatId='8238301494';
+  try{
+    const response=await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({chat_id:chatId,text:`Message: ${message}`})
+    });
+    const data=await response.json();
+    if(data.ok){statusMessage.textContent="Message has been sent.";telegramForm.reset();}
+    else{statusMessage.textContent="Error sending message.";console.error(data);}
+  }catch(err){statusMessage.textContent="Error sending message.";console.error(err);}
+});
+</script>
+
+</body>
+</html>
